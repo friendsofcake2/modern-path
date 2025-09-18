@@ -1,6 +1,6 @@
 {
-    "name": "friendofcake2/modern-path",
-    "description": "Simple template path management for CakePHP 2.x - Use /templates instead of /app/View",
+    "name": "friendsofcake2/modern-path",
+    "description": "This plugin helps you adopt CakePHP 5's directory structure in your CakePHP 2.x application.",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "template", "view", "path"],
     "license": "MIT",

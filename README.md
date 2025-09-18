@@ -1,6 +1,6 @@
 # ModernPath Plugin for CakePHP 2.x
 
-Simple plugin to use `/templates` directory instead of `/app/View` for templates and modernize your CakePHP 2.x directory structure to match CakePHP 5 conventions.
+This plugin helps you adopt CakePHP 5's directory structure in your CakePHP 2.x application.
 
 ## Benefits
 
@@ -17,7 +17,7 @@ By adopting the CakePHP 5 directory structure in your CakePHP 2.x application, y
 With this plugin, you can achieve a CakePHP 5-compatible directory structure:
 
 ```
-/                        # Your project root
+/                       # Your project root
 ├── config/             # Configuration files (instead of app/Config)
 │   ├── bootstrap.php
 │   ├── core.php
@@ -27,13 +27,13 @@ With this plugin, you can achieve a CakePHP 5-compatible directory structure:
 │   ├── DebugKit/
 │   └── ModernPath/
 ├── resources/          # Resources
-│   └── locales/       # Translation files (instead of app/Locale)
+│   └── locales/        # Translation files (instead of app/Locale)
 │       ├── eng/
 │       └── jpn/
 ├── src/                # Application source (instead of app/)
 │   ├── Controller/
 │   ├── Model/
-│   └── View/          # View classes only
+│   └── View/           # View classes only
 ├── templates/          # Template files (instead of app/View)
 │   ├── Users/
 │   ├── Posts/
@@ -56,8 +56,9 @@ This structure matches CakePHP 5's directory layout, making future upgrades sign
 | Application Code | `/app/Controller/`<br>`/app/Model/` | `/src/Controller/`<br>`/src/Model/` |
 | Configuration | `/app/Config/` | `/config/` |
 | View Templates | `/app/View/` | `/templates/` |
-| Plugins | `/app/Plugin/` | `/plugins/` |
+| Plugins | `/app/Plugin/` or `/plugins/` | `/plugins/` |
 | Translations | `/app/Locale/` | `/resources/locales/` |
+| Console Scripts | `/app/Console/cake` | `/bin/cake` |
 | Web Root | `/app/webroot/` | `/webroot/` |
 | Temporary Files | `/app/tmp/` | `/tmp/` |
 | Test Files | `/app/Test/` | `/tests/` |
@@ -68,72 +69,31 @@ This structure matches CakePHP 5's directory layout, making future upgrades sign
 ## Installation
 
 ```bash
-composer require friendofcake2/modern-path
+composer require friendsofcake2/modern-path
 ```
 
 ## Setup
 
 ### 1. Configure webroot/index.php
 
-Update your `webroot/index.php` with the following configuration to support the modern directory structure:
+Copy the sample file from the plugin's skeleton directory:
 
-```php
-/*
- * The full path to the directory which holds "app", WITHOUT a trailing DS.
- */
-if (!defined('ROOT')) {
-    define('ROOT', dirname(__DIR__));
-}
-
-/*
- * The actual directory name for the "app".
- */
-if (!defined('APP_DIR')) {
-    define('APP_DIR', 'src');
-}
-
-/*
- * Config Directory
- */
-if (!defined('CONFIG')) {
-    define('CONFIG', ROOT.'/config/');
-}
-
-/**
- * This auto-detects CakePHP as a composer installed library.
- * You may remove this if you are not planning to use composer (not recommended, though).
- */
-$vendorPath = ROOT.'/vendor/friendsofcake2/cakephp/lib';
-$dispatcher = 'Cake/Console/ShellDispatcher.php';
-if (!defined('CAKE_CORE_INCLUDE_PATH') && file_exists($vendorPath.'/'.$dispatcher)) {
-    define('CAKE_CORE_INCLUDE_PATH', $vendorPath);
-}
-
-/*
- * Editing below this line should NOT be necessary.
- * Change at your own risk.
- */
-if (!defined('WEBROOT_DIR')) {
-    define('WEBROOT_DIR', basename(__DIR__));
-}
-if (!defined('WWW_ROOT')) {
-    define('WWW_ROOT', __DIR__.'/');
-}
-if (!defined('VENDORS')) {
-    define('VENDORS', ROOT.'/vendor/');
-}
-if (!defined('TESTS')) {
-    define('TESTS', ROOT.'/tests/');
-}
-if (!defined('TMP')) {
-    define('TMP', ROOT.'/tmp/');
-}
-if (!defined('LOGS')) {
-    define('LOGS', ROOT.'/logs/');
-}
+```bash
+cp plugins/ModernPath/skeleton/webroot/index.php webroot/index.php
 ```
 
-### 2. Load the plugin
+### 2. Configure Console (bin/cake)
+
+Copy the console script from the plugin's skeleton directory and make it executable:
+
+```bash
+cp plugins/ModernPath/skeleton/bin/cake bin/cake
+chmod +x bin/cake
+```
+
+This enables you to run console commands using the modern `bin/cake` instead of `app/Console/cake`.
+
+### 3. Load the plugin
 
 Add to your `app/Config/bootstrap.php` or `config/bootstrap.php`:
 
@@ -141,7 +101,7 @@ Add to your `app/Config/bootstrap.php` or `config/bootstrap.php`:
 CakePlugin::load('ModernPath', array('bootstrap' => true));
 ```
 
-### 3. Configure plugins directory in composer.json
+### 4. Configure plugins directory in composer.json
 
 To use the modern `/plugins` directory instead of `/app/Plugin`, update your `composer.json`:
 
@@ -157,7 +117,7 @@ To use the modern `/plugins` directory instead of `/app/Plugin`, update your `co
 
 This will install CakePHP plugins to `/plugins` directory when using Composer.
 
-### 4. Configure Email (if using CakeEmail)
+### 5. Configure Email (if using CakeEmail)
 
 Update your email configuration in `app/Config/email.php` or `config/email.php`:
 
