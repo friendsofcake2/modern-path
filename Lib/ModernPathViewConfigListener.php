@@ -39,12 +39,6 @@ class ModernPathViewConfigListener implements CakeEventListener
         /** @var Controller $controller */
         $controller = $event->subject();
 
-        // Skip error controllers to prevent issues
-        $skipControllers = ['CakeError', 'Error', 'Exception'];
-        if (in_array($controller->name, $skipControllers, true)) {
-            return;
-        }
-
         // Skip if viewClass is already set to something other than View
         // (e.g., JsonView, XmlView, etc.)
         if (isset($controller->viewClass)
