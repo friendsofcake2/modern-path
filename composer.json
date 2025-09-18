@@ -1,0 +1,21 @@
+{
+    "name": "friendofcake2/modern-path",
+    "description": "Simple template path management for CakePHP 2.x - Use /templates instead of /app/View",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "template", "view", "path"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "cakephp/cakephp": "^2.10",
+        "composer/installers": "*"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "extra": {
+        "installer-name": "ModernPath"
+    }
+}
