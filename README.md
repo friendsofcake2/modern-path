@@ -288,16 +288,6 @@ Your email templates should be placed in:
 Configure::write('ModernPath.templatePath', ROOT . DS . 'themes' . DS . 'mytheme' . DS);
 ```
 
-### Multiple Template Paths
-
-```php
-// Support for multiple template directories (future feature)
-Configure::write('ModernPath.templatePaths', [
-    ROOT . DS . 'templates' . DS,
-    ROOT . DS . 'themes' . DS . 'default' . DS,
-]);
-```
-
 ## Troubleshooting
 
 ### Templates not loading
