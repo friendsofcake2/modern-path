@@ -1,5 +1,12 @@
 # ModernPath Plugin for CakePHP 2.x
 
+[![GitHub License](https://img.shields.io/github/license/friendsofcake2/modern-path?label=License)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/friendsofcake2/modern-path?label=Packagist)](https://packagist.org/packages/friendsofcake2/modern-path)
+[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/friendsofcake2/modern-path/php?logo=php&logoColor=%23FFFFFF&label=PHP&labelColor=%23777BB4&color=%23FFFFFF)](https://packagist.org/packages/friendsofcake2/modern-path)
+[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/friendsofcake2/modern-path/cakephp/cakephp?logo=cakephp&logoColor=%23FFFFFF&label=CakePHP&labelColor=%23D33C43&color=%23FFFFFF)](https://packagist.org/packages/friendsofcake2/modern-path)
+[![Tests](https://img.shields.io/github/actions/workflow/status/friendsofcake2/modern-path/tests.yml?label=Tests)](https://github.com/friendsofcake2/modern-path/actions/workflows/tests.yml)
+[![Codecov](https://img.shields.io/codecov/c/gh/friendsofcake2/modern-path?label=Coverage)](https://codecov.io/gh/friendsofcake2/modern-path)
+
 This plugin helps you adopt CakePHP 5's directory structure in your CakePHP 2.x application.
 
 ## Benefits
